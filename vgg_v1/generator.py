@@ -15,12 +15,11 @@ import os
 data_path = 'data/train/'
 
 class Generator(object):
-    def  __init__(self,data_path, batch_size = 64, target_size=(224,224)):
+    def  __init__(self,data_path,target_size=(224,224)):
         self.images_path = []
         self.init(data_path)
         self.target_size = target_size
         self.index = 0
-        self.batch_size = batch_size
 
     def init(self, data_path):
         for subdir in os.listdir(data_path):

@@ -22,9 +22,8 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 # set variables
 data_path = '../data/train'
 
-batch_size = 64
 epochs = 10
-Iter = generator.Generator(data_path, batch_size)
+Iter = generator.Generator(data_path)
 
 vgg = VGG16(include_top=True, weights='imagenet',input_tensor=None, input_shape=(224,224,3), pooling=None)
 for layer in vgg.layers: layer.trainable=False
