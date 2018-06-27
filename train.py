@@ -7,14 +7,14 @@
 # =========================================================
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.models import Model
-from keras.layers import Flatten, Dense, Lambda
+from keras.layers import Dense
 from keras.applications.vgg16 import VGG16
 from keras.optimizers import Adam
 from keras.preprocessing import image
 
 import os
 
-import losses
+from vgg_v1 import losses
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
