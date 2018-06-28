@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 # @Time : 3/26/2018 9:16 AM 
 # @Author : sunyonghai 
-# @File : train_2.py 
+# @File : train.py
 # @Software: ZJ_AI
 # =========================================================
 
@@ -17,8 +17,8 @@ img_width,img_height = 150,150
 
 top_model_weights_path = 'bottleneck_fc_model.h5'
 
-train_data_dir = 'data/train'
-validation_data_dir = 'data/valid'
+train_data_dir = '../data/train'
+validation_data_dir = '../data/valid'
 
 nb_train_samples = 2000
 nb_validation_samples = 500

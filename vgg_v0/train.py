@@ -26,7 +26,7 @@ gen = image.ImageDataGenerator()
 batch_size = 64
 epochs = 10
 # import training data
-batches = gen.flow_from_directory('data/train',
+batches = gen.flow_from_directory('../data/train',
                                   target_size=(224,224),
                                   class_mode='categorical',
                                   shuffle=True,
@@ -34,7 +34,7 @@ batches = gen.flow_from_directory('data/train',
 
 
 # import validation data
-val_batches = gen.flow_from_directory('data/valid',
+val_batches = gen.flow_from_directory('../data/valid',
                                       target_size=(224,224),
                                       class_mode='categorical',
                                       shuffle=True,
@@ -61,7 +61,7 @@ vgg2.summary()
 # compile the new model
 vgg2.compile(optimizer=Adam(lr=0.001), loss=losses.mean_squared_error, metrics=['accuracy'])
 
-weight_path = 'model/'+ 'weights_{epoch:02d}_{loss:.4f}.hdf5'
+weight_path = '../model/'+ 'weights_{epoch:02d}_{loss:.4f}.hdf5'
 checkpointer = ModelCheckpoint(filepath=weight_path, monitor='loss', verbose=1, save_best_only=True, save_weights_only=True, mode='min', period=1)
 earlyStopping = EarlyStopping(monitor='loss', patience=0, verbose=0, mode='min')
 # run it!
