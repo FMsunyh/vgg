@@ -94,38 +94,14 @@ class Generator(object):
 
         name = os.path.basename(path)
         if 'cat' in name:
-            label = np.asarray([0, 1])
+            label = np.array([0, 1])
         else:
-            label = np.asarray([1, 0])
+            label = np.array([1, 0])
 
         return label
 
     def load_label_group(self, group):
         return [self.load_label(image_index) for image_index in group]
-
-    def compute(self, path):
-        x = self.load_image(path)
-        x = self.rezise_image(x)
-
-        name =  os.path.basename(path)
-        if 'cat' in name:
-            y = np.asarray([0, 1])
-        else:
-            y = np.asarray([1,0])
-
-        # get the max image shape
-        # max_shape = tuple( max(x.shape[i]) for i in range(3) )
-
-        # construct an image batch object
-        image_batch = np.zeros((1,) + (224,224,3), dtype=keras.backend.floatx())
-
-        # copy all images to the upper left part of the image batch object
-        image_batch[0, :x.shape[0], :x.shape[1], :x.shape[2]] = x
-
-        y_batch = np.zeros((1,) + (2,), dtype=keras.backend.floatx())
-        y_batch[0, :y.shape[0]] = y
-
-        return image_batch, y_batch
 
     def compute_inputs(self, image_group):
         # get the max image shape
@@ -141,7 +117,6 @@ class Generator(object):
         return image_batch
 
     def compute_targets(self,label_group):
-        a = label_group[0].shape
         label_batch = np.zeros((self.batch_size,) + (label_group[0].shape[0],), dtype=keras.backend.floatx())
         for index, label in enumerate(label_group):
             label_batch[index, ...] = label
